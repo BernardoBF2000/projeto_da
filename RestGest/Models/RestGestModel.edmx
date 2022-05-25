@@ -1,0 +1,841 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="RestGest.Models.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="RestGestModelsStoreContainer">
+    <EntitySet Name="AddressSet" EntityType="RestGest.Models.Store.AddressSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="PersonSet" EntityType="RestGest.Models.Store.PersonSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="OrderSet" EntityType="RestGest.Models.Store.OrderSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="RestaurantSet" EntityType="RestGest.Models.Store.RestaurantSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="MenuItemSet" EntityType="RestGest.Models.Store.MenuItemSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="MenuCategorySet" EntityType="RestGest.Models.Store.MenuCategorySet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="OrderStatusSet" EntityType="RestGest.Models.Store.OrderStatusSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="PaymentSet" EntityType="RestGest.Models.Store.PaymentSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="PaymentMethodSet" EntityType="RestGest.Models.Store.PaymentMethodSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ActiveMenuItemSet" EntityType="RestGest.Models.Store.ActiveMenuItemSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="PersonSet_Employee" EntityType="RestGest.Models.Store.PersonSet_Employee" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="PersonSet_Client" EntityType="RestGest.Models.Store.PersonSet_Client" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="MenuItemOrder" EntityType="RestGest.Models.Store.MenuItemOrder" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="PersonAddress" Association="RestGest.Models.Store.PersonAddress">
+      <End Role="Person" EntitySet="PersonSet" />
+      <End Role="Address" EntitySet="AddressSet" />
+    </AssociationSet>
+    <AssociationSet Name="OrderEmployee" Association="RestGest.Models.Store.OrderEmployee">
+      <End Role="Order" EntitySet="OrderSet" />
+      <End Role="Employee" EntitySet="PersonSet_Employee" />
+    </AssociationSet>
+    <AssociationSet Name="OrderClient" Association="RestGest.Models.Store.OrderClient">
+      <End Role="Order" EntitySet="OrderSet" />
+      <End Role="Client" EntitySet="PersonSet_Client" />
+    </AssociationSet>
+    <AssociationSet Name="RestaurantAddress" Association="RestGest.Models.Store.RestaurantAddress">
+      <End Role="Restaurant" EntitySet="RestaurantSet" />
+      <End Role="Address" EntitySet="AddressSet" />
+    </AssociationSet>
+    <AssociationSet Name="RestaurantEmployee" Association="RestGest.Models.Store.RestaurantEmployee">
+      <End Role="Restaurant" EntitySet="RestaurantSet" />
+      <End Role="Employee" EntitySet="PersonSet_Employee" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MenuItemOrder_MenuItem" Association="RestGest.Models.Store.FK_MenuItemOrder_MenuItem">
+      <End Role="MenuItem" EntitySet="MenuItemSet" />
+      <End Role="MenuItemOrder" EntitySet="MenuItemOrder" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MenuItemOrder_Order" Association="RestGest.Models.Store.FK_MenuItemOrder_Order">
+      <End Role="Order" EntitySet="OrderSet" />
+      <End Role="MenuItemOrder" EntitySet="MenuItemOrder" />
+    </AssociationSet>
+    <AssociationSet Name="MenuCategoryMenuItem" Association="RestGest.Models.Store.MenuCategoryMenuItem">
+      <End Role="MenuCategory" EntitySet="MenuCategorySet" />
+      <End Role="MenuItem" EntitySet="MenuItemSet" />
+    </AssociationSet>
+    <AssociationSet Name="OrderStatusOrder" Association="RestGest.Models.Store.OrderStatusOrder">
+      <End Role="OrderStatus" EntitySet="OrderStatusSet" />
+      <End Role="Order" EntitySet="OrderSet" />
+    </AssociationSet>
+    <AssociationSet Name="PaymentOrder" Association="RestGest.Models.Store.PaymentOrder">
+      <End Role="Payment" EntitySet="PaymentSet" />
+      <End Role="Order" EntitySet="OrderSet" />
+    </AssociationSet>
+    <AssociationSet Name="PaymentMethodPayment" Association="RestGest.Models.Store.PaymentMethodPayment">
+      <End Role="PaymentMethod" EntitySet="PaymentMethodSet" />
+      <End Role="Payment" EntitySet="PaymentSet" />
+    </AssociationSet>
+    <AssociationSet Name="RestaurantActiveMenuItem" Association="RestGest.Models.Store.RestaurantActiveMenuItem">
+      <End Role="Restaurant" EntitySet="RestaurantSet" />
+      <End Role="ActiveMenuItem" EntitySet="ActiveMenuItemSet" />
+    </AssociationSet>
+    <AssociationSet Name="MenuItemActiveMenuItem" Association="RestGest.Models.Store.MenuItemActiveMenuItem">
+      <End Role="MenuItem" EntitySet="MenuItemSet" />
+      <End Role="ActiveMenuItem" EntitySet="ActiveMenuItemSet" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Employee_inherits_Person" Association="RestGest.Models.Store.FK_Employee_inherits_Person">
+      <End Role="Person" EntitySet="PersonSet" />
+      <End Role="Employee" EntitySet="PersonSet_Employee" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Client_inherits_Person" Association="RestGest.Models.Store.FK_Client_inherits_Person">
+      <End Role="Person" EntitySet="PersonSet" />
+      <End Role="Client" EntitySet="PersonSet_Client" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="AddressSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Street" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="City" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="PostalCode" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Country" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PersonSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="PhoneNumber" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="Address_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="OrderSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Total" Type="float" Nullable="false" />
+    <Property Name="Employee_Id" Type="int" Nullable="false" />
+    <Property Name="Client_Id" Type="int" Nullable="false" />
+    <Property Name="OrderStatus_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="RestaurantSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Address_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="MenuItemSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="ImagePath" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Ingredients" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Price" Type="float" Nullable="false" />
+    <Property Name="Active" Type="bit" Nullable="false" />
+    <Property Name="MenuCategoryId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="MenuCategorySet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Active" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="OrderStatusSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PaymentSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Value" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="PaymentMethodId" Type="int" Nullable="false" />
+    <Property Name="Order_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PaymentMethodSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Active" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ActiveMenuItemSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RestaurantId" Type="int" Nullable="false" />
+    <Property Name="MenuItemId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PersonSet_Employee">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Wage" Type="float" Nullable="false" />
+    <Property Name="Position" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="RestaurantId" Type="int" Nullable="false" />
+    <Property Name="Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PersonSet_Client">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="TotalSpent" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="NIF" Type="int" Nullable="false" />
+    <Property Name="Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="MenuItemOrder">
+    <Key>
+      <PropertyRef Name="MenuItem_Id" />
+      <PropertyRef Name="Orders_Id" />
+    </Key>
+    <Property Name="MenuItem_Id" Type="int" Nullable="false" />
+    <Property Name="Orders_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="PersonAddress">
+    <End Role="Person" Type="RestGest.Models.Store.PersonSet" Multiplicity="*" />
+    <End Role="Address" Type="RestGest.Models.Store.AddressSet" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Address">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Person">
+        <PropertyRef Name="Address_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="OrderEmployee">
+    <End Role="Order" Type="RestGest.Models.Store.OrderSet" Multiplicity="*" />
+    <End Role="Employee" Type="RestGest.Models.Store.PersonSet_Employee" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Order">
+        <PropertyRef Name="Employee_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="OrderClient">
+    <End Role="Order" Type="RestGest.Models.Store.OrderSet" Multiplicity="*" />
+    <End Role="Client" Type="RestGest.Models.Store.PersonSet_Client" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Client">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Order">
+        <PropertyRef Name="Client_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="RestaurantAddress">
+    <End Role="Restaurant" Type="RestGest.Models.Store.RestaurantSet" Multiplicity="*" />
+    <End Role="Address" Type="RestGest.Models.Store.AddressSet" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Address">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Restaurant">
+        <PropertyRef Name="Address_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="RestaurantEmployee">
+    <End Role="Restaurant" Type="RestGest.Models.Store.RestaurantSet" Multiplicity="1" />
+    <End Role="Employee" Type="RestGest.Models.Store.PersonSet_Employee" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Restaurant">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Employee">
+        <PropertyRef Name="RestaurantId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="MenuCategoryMenuItem">
+    <End Role="MenuCategory" Type="RestGest.Models.Store.MenuCategorySet" Multiplicity="1" />
+    <End Role="MenuItem" Type="RestGest.Models.Store.MenuItemSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MenuCategory">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="MenuItem">
+        <PropertyRef Name="MenuCategoryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="OrderStatusOrder">
+    <End Role="OrderStatus" Type="RestGest.Models.Store.OrderStatusSet" Multiplicity="1" />
+    <End Role="Order" Type="RestGest.Models.Store.OrderSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OrderStatus">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Order">
+        <PropertyRef Name="OrderStatus_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PaymentOrder">
+    <End Role="Payment" Type="RestGest.Models.Store.PaymentSet" Multiplicity="*" />
+    <End Role="Order" Type="RestGest.Models.Store.OrderSet" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Order">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Payment">
+        <PropertyRef Name="Order_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PaymentMethodPayment">
+    <End Role="PaymentMethod" Type="RestGest.Models.Store.PaymentMethodSet" Multiplicity="1" />
+    <End Role="Payment" Type="RestGest.Models.Store.PaymentSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PaymentMethod">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Payment">
+        <PropertyRef Name="PaymentMethodId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="RestaurantActiveMenuItem">
+    <End Role="Restaurant" Type="RestGest.Models.Store.RestaurantSet" Multiplicity="1" />
+    <End Role="ActiveMenuItem" Type="RestGest.Models.Store.ActiveMenuItemSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Restaurant">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ActiveMenuItem">
+        <PropertyRef Name="RestaurantId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="MenuItemActiveMenuItem">
+    <End Role="MenuItem" Type="RestGest.Models.Store.MenuItemSet" Multiplicity="1" />
+    <End Role="ActiveMenuItem" Type="RestGest.Models.Store.ActiveMenuItemSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MenuItem">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ActiveMenuItem">
+        <PropertyRef Name="MenuItemId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MenuItemOrder_MenuItem">
+    <End Role="MenuItem" Type="RestGest.Models.Store.MenuItemSet" Multiplicity="1" />
+    <End Role="MenuItemOrder" Type="RestGest.Models.Store.MenuItemOrder" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MenuItem">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="MenuItemOrder">
+        <PropertyRef Name="MenuItem_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MenuItemOrder_Order">
+    <End Role="MenuItemOrder" Type="RestGest.Models.Store.MenuItemOrder" Multiplicity="*" />
+    <End Role="Order" Type="RestGest.Models.Store.OrderSet" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Order">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="MenuItemOrder">
+        <PropertyRef Name="Orders_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Employee_inherits_Person">
+    <End Role="Person" Type="RestGest.Models.Store.PersonSet" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Employee" Type="RestGest.Models.Store.PersonSet_Employee" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Person">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Employee">
+        <PropertyRef Name="Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Client_inherits_Person">
+    <End Role="Person" Type="RestGest.Models.Store.PersonSet" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Client" Type="RestGest.Models.Store.PersonSet_Client" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Person">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Client">
+        <PropertyRef Name="Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="RestGest.Models" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+        <EntityContainer Name="RestGestModelContainer" annotation:LazyLoadingEnabled="false">
+          <EntitySet Name="AddressSet" EntityType="RestGest.Models.Address" />
+          <EntitySet Name="PersonSet" EntityType="RestGest.Models.Person" />
+          <EntitySet Name="OrderSet" EntityType="RestGest.Models.Order" />
+          <AssociationSet Name="PersonAddress" Association="RestGest.Models.PersonAddress">
+            <End Role="Person" EntitySet="PersonSet" />
+            <End Role="Address" EntitySet="AddressSet" />
+          </AssociationSet>
+          <AssociationSet Name="OrderEmployee" Association="RestGest.Models.OrderEmployee">
+            <End Role="Order" EntitySet="OrderSet" />
+            <End Role="Employee" EntitySet="PersonSet" />
+          </AssociationSet>
+          <AssociationSet Name="OrderClient" Association="RestGest.Models.OrderClient">
+            <End Role="Order" EntitySet="OrderSet" />
+            <End Role="Client" EntitySet="PersonSet" />
+          </AssociationSet>
+          <EntitySet Name="RestaurantSet" EntityType="RestGest.Models.Restaurant" />
+          <AssociationSet Name="RestaurantAddress" Association="RestGest.Models.RestaurantAddress">
+            <End Role="Restaurant" EntitySet="RestaurantSet" />
+            <End Role="Address" EntitySet="AddressSet" />
+          </AssociationSet>
+          <AssociationSet Name="RestaurantEmployee" Association="RestGest.Models.RestaurantEmployee">
+            <End Role="Restaurant" EntitySet="RestaurantSet" />
+            <End Role="Employee" EntitySet="PersonSet" />
+          </AssociationSet>
+          <EntitySet Name="MenuItemSet" EntityType="RestGest.Models.MenuItem" />
+          <AssociationSet Name="MenuItemOrder" Association="RestGest.Models.MenuItemOrder">
+            <End Role="MenuItem" EntitySet="MenuItemSet" />
+            <End Role="Order" EntitySet="OrderSet" />
+          </AssociationSet>
+          <EntitySet Name="MenuCategorySet" EntityType="RestGest.Models.MenuCategory" />
+          <AssociationSet Name="MenuCategoryMenuItem" Association="RestGest.Models.MenuCategoryMenuItem">
+            <End Role="MenuCategory" EntitySet="MenuCategorySet" />
+            <End Role="MenuItem" EntitySet="MenuItemSet" />
+          </AssociationSet>
+          <EntitySet Name="OrderStatusSet" EntityType="RestGest.Models.OrderStatus" />
+          <AssociationSet Name="OrderStatusOrder" Association="RestGest.Models.OrderStatusOrder">
+            <End Role="OrderStatus" EntitySet="OrderStatusSet" />
+            <End Role="Order" EntitySet="OrderSet" />
+          </AssociationSet>
+          <EntitySet Name="PaymentSet" EntityType="RestGest.Models.Payment" />
+          <EntitySet Name="PaymentMethodSet" EntityType="RestGest.Models.PaymentMethod" />
+          <AssociationSet Name="PaymentOrder" Association="RestGest.Models.PaymentOrder">
+            <End Role="Payment" EntitySet="PaymentSet" />
+            <End Role="Order" EntitySet="OrderSet" />
+          </AssociationSet>
+          <AssociationSet Name="PaymentMethodPayment" Association="RestGest.Models.PaymentMethodPayment">
+            <End Role="PaymentMethod" EntitySet="PaymentMethodSet" />
+            <End Role="Payment" EntitySet="PaymentSet" />
+          </AssociationSet>
+          <EntitySet Name="ActiveMenuItemSet" EntityType="RestGest.Models.ActiveMenuItem" />
+          <AssociationSet Name="RestaurantActiveMenuItem" Association="RestGest.Models.RestaurantActiveMenuItem">
+            <End Role="Restaurant" EntitySet="RestaurantSet" />
+            <End Role="ActiveMenuItem" EntitySet="ActiveMenuItemSet" />
+          </AssociationSet>
+          <AssociationSet Name="MenuItemActiveMenuItem" Association="RestGest.Models.MenuItemActiveMenuItem">
+            <End Role="MenuItem" EntitySet="MenuItemSet" />
+            <End Role="ActiveMenuItem" EntitySet="ActiveMenuItemSet" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Address">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Street" Type="String" Nullable="false" />
+          <Property Name="City" Type="String" Nullable="false" />
+          <Property Name="PostalCode" Type="String" Nullable="false" />
+          <Property Name="Country" Type="String" Nullable="false" />
+          <NavigationProperty Name="Person" Relationship="RestGest.Models.PersonAddress" FromRole="Address" ToRole="Person" />
+          <NavigationProperty Name="Restaurant" Relationship="RestGest.Models.RestaurantAddress" FromRole="Address" ToRole="Restaurant" />
+        </EntityType>
+        <EntityType Name="Person">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <Property Name="PhoneNumber" Type="String" Nullable="true" />
+          <NavigationProperty Name="Address" Relationship="RestGest.Models.PersonAddress" FromRole="Person" ToRole="Address" />
+        </EntityType>
+        <EntityType Name="Client" BaseType="RestGest.Models.Person" >
+          <Property Name="TotalSpent" Type="String" Nullable="false" />
+          <Property Name="NIF" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Orders" Relationship="RestGest.Models.OrderClient" FromRole="Client" ToRole="Order" />
+        </EntityType>
+        <EntityType Name="Employee" BaseType="RestGest.Models.Person" >
+          <Property Name="Wage" Type="Double" Nullable="false" />
+          <Property Name="Position" Type="String" Nullable="false" />
+          <NavigationProperty Name="Orders" Relationship="RestGest.Models.OrderEmployee" FromRole="Employee" ToRole="Order" />
+          <NavigationProperty Name="Restaurant" Relationship="RestGest.Models.RestaurantEmployee" FromRole="Employee" ToRole="Restaurant" />
+          <Property Name="RestaurantId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Order">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Total" Type="Double" Nullable="false" />
+          <NavigationProperty Name="Employee" Relationship="RestGest.Models.OrderEmployee" FromRole="Order" ToRole="Employee" />
+          <NavigationProperty Name="Client" Relationship="RestGest.Models.OrderClient" FromRole="Order" ToRole="Client" />
+          <NavigationProperty Name="MenuItem" Relationship="RestGest.Models.MenuItemOrder" FromRole="Order" ToRole="MenuItem" />
+          <NavigationProperty Name="OrderStatus" Relationship="RestGest.Models.OrderStatusOrder" FromRole="Order" ToRole="OrderStatus" />
+          <NavigationProperty Name="Payments" Relationship="RestGest.Models.PaymentOrder" FromRole="Order" ToRole="Payment" />
+        </EntityType>
+        <Association Name="PersonAddress">
+          <End Type="RestGest.Models.Person" Role="Person" Multiplicity="1" />
+          <End Type="RestGest.Models.Address" Role="Address" Multiplicity="1" />
+        </Association>
+        <Association Name="OrderEmployee">
+          <End Type="RestGest.Models.Order" Role="Order" Multiplicity="*" />
+          <End Type="RestGest.Models.Employee" Role="Employee" Multiplicity="1" />
+        </Association>
+        <Association Name="OrderClient">
+          <End Type="RestGest.Models.Order" Role="Order" Multiplicity="*" />
+          <End Type="RestGest.Models.Client" Role="Client" Multiplicity="1" />
+        </Association>
+        <EntityType Name="Restaurant">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <NavigationProperty Name="Address" Relationship="RestGest.Models.RestaurantAddress" FromRole="Restaurant" ToRole="Address" />
+          <NavigationProperty Name="Employees" Relationship="RestGest.Models.RestaurantEmployee" FromRole="Restaurant" ToRole="Employee" />
+          <NavigationProperty Name="ActiveMenuItems" Relationship="RestGest.Models.RestaurantActiveMenuItem" FromRole="Restaurant" ToRole="ActiveMenuItem" />
+        </EntityType>
+        <Association Name="RestaurantAddress">
+          <End Type="RestGest.Models.Restaurant" Role="Restaurant" Multiplicity="1" />
+          <End Type="RestGest.Models.Address" Role="Address" Multiplicity="1" />
+        </Association>
+        <Association Name="RestaurantEmployee">
+          <End Type="RestGest.Models.Restaurant" Role="Restaurant" Multiplicity="1" />
+          <End Type="RestGest.Models.Employee" Role="Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Restaurant">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="RestaurantId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="MenuItem">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <Property Name="ImagePath" Type="String" Nullable="false" />
+          <Property Name="Ingredients" Type="String" Nullable="false" />
+          <Property Name="Price" Type="Double" Nullable="false" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Orders" Relationship="RestGest.Models.MenuItemOrder" FromRole="MenuItem" ToRole="Order" />
+          <NavigationProperty Name="MenuCategory" Relationship="RestGest.Models.MenuCategoryMenuItem" FromRole="MenuItem" ToRole="MenuCategory" />
+          <Property Name="MenuCategoryId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ActiveMenuItems" Relationship="RestGest.Models.MenuItemActiveMenuItem" FromRole="MenuItem" ToRole="ActiveMenuItem" />
+        </EntityType>
+        <Association Name="MenuItemOrder">
+          <End Type="RestGest.Models.MenuItem" Role="MenuItem" Multiplicity="*" />
+          <End Type="RestGest.Models.Order" Role="Order" Multiplicity="*" />
+        </Association>
+        <EntityType Name="MenuCategory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="MenuItems" Relationship="RestGest.Models.MenuCategoryMenuItem" FromRole="MenuCategory" ToRole="MenuItem" />
+        </EntityType>
+        <Association Name="MenuCategoryMenuItem">
+          <End Type="RestGest.Models.MenuCategory" Role="MenuCategory" Multiplicity="1" />
+          <End Type="RestGest.Models.MenuItem" Role="MenuItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MenuCategory">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MenuItem">
+              <PropertyRef Name="MenuCategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="OrderStatus">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <NavigationProperty Name="Orders" Relationship="RestGest.Models.OrderStatusOrder" FromRole="OrderStatus" ToRole="Order" />
+        </EntityType>
+        <Association Name="OrderStatusOrder">
+          <End Type="RestGest.Models.OrderStatus" Role="OrderStatus" Multiplicity="1" />
+          <End Type="RestGest.Models.Order" Role="Order" Multiplicity="*" />
+        </Association>
+        <EntityType Name="Payment">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Value" Type="String" Nullable="false" />
+          <NavigationProperty Name="Order" Relationship="RestGest.Models.PaymentOrder" FromRole="Payment" ToRole="Order" />
+          <NavigationProperty Name="PaymentMethod" Relationship="RestGest.Models.PaymentMethodPayment" FromRole="Payment" ToRole="PaymentMethod" />
+          <Property Name="PaymentMethodId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PaymentMethod">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Payments" Relationship="RestGest.Models.PaymentMethodPayment" FromRole="PaymentMethod" ToRole="Payment" />
+        </EntityType>
+        <Association Name="PaymentOrder">
+          <End Type="RestGest.Models.Payment" Role="Payment" Multiplicity="*" />
+          <End Type="RestGest.Models.Order" Role="Order" Multiplicity="1" />
+        </Association>
+        <Association Name="PaymentMethodPayment">
+          <End Type="RestGest.Models.PaymentMethod" Role="PaymentMethod" Multiplicity="1" />
+          <End Type="RestGest.Models.Payment" Role="Payment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PaymentMethod">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Payment">
+              <PropertyRef Name="PaymentMethodId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="ActiveMenuItem">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Restaurant" Relationship="RestGest.Models.RestaurantActiveMenuItem" FromRole="ActiveMenuItem" ToRole="Restaurant" />
+          <Property Name="RestaurantId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="MenuItem" Relationship="RestGest.Models.MenuItemActiveMenuItem" FromRole="ActiveMenuItem" ToRole="MenuItem" />
+          <Property Name="MenuItemId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <Association Name="RestaurantActiveMenuItem">
+          <End Type="RestGest.Models.Restaurant" Role="Restaurant" Multiplicity="1" />
+          <End Type="RestGest.Models.ActiveMenuItem" Role="ActiveMenuItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Restaurant">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ActiveMenuItem">
+              <PropertyRef Name="RestaurantId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="MenuItemActiveMenuItem">
+          <End Type="RestGest.Models.MenuItem" Role="MenuItem" Multiplicity="1" />
+          <End Type="RestGest.Models.ActiveMenuItem" Role="ActiveMenuItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MenuItem">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ActiveMenuItem">
+              <PropertyRef Name="MenuItemId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="RestGestModelsStoreContainer" CdmEntityContainer="RestGestModelContainer">
+    <EntitySetMapping Name="AddressSet">
+      <EntityTypeMapping TypeName="IsTypeOf(RestGest.Models.Address)">
+        <MappingFragment StoreEntitySet="AddressSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Street" ColumnName="Street" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="PostalCode" ColumnName="PostalCode" />
+          <ScalarProperty Name="Country" ColumnName="Country" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PersonSet">
+      <EntityTypeMapping TypeName="IsTypeOf(RestGest.Models.Person)">
+        <MappingFragment StoreEntitySet="PersonSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(RestGest.Models.Employee)">
+        <MappingFragment StoreEntitySet="PersonSet_Employee">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Wage" ColumnName="Wage" />
+          <ScalarProperty Name="Position" ColumnName="Position" />
+          <ScalarProperty Name="RestaurantId" ColumnName="RestaurantId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(RestGest.Models.Client)">
+        <MappingFragment StoreEntitySet="PersonSet_Client">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="TotalSpent" ColumnName="TotalSpent" />
+          <ScalarProperty Name="NIF" ColumnName="NIF" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OrderSet">
+      <EntityTypeMapping TypeName="IsTypeOf(RestGest.Models.Order)">
+        <MappingFragment StoreEntitySet="OrderSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Total" ColumnName="Total" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RestaurantSet">
+      <EntityTypeMapping TypeName="IsTypeOf(RestGest.Models.Restaurant)">
+        <MappingFragment StoreEntitySet="RestaurantSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MenuItemSet">
+      <EntityTypeMapping TypeName="IsTypeOf(RestGest.Models.MenuItem)">
+        <MappingFragment StoreEntitySet="MenuItemSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ImagePath" ColumnName="ImagePath" />
+          <ScalarProperty Name="Ingredients" ColumnName="Ingredients" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="MenuCategoryId" ColumnName="MenuCategoryId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MenuCategorySet">
+      <EntityTypeMapping TypeName="IsTypeOf(RestGest.Models.MenuCategory)">
+        <MappingFragment StoreEntitySet="MenuCategorySet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OrderStatusSet">
+      <EntityTypeMapping TypeName="IsTypeOf(RestGest.Models.OrderStatus)">
+        <MappingFragment StoreEntitySet="OrderStatusSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PaymentSet">
+      <EntityTypeMapping TypeName="IsTypeOf(RestGest.Models.Payment)">
+        <MappingFragment StoreEntitySet="PaymentSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Value" ColumnName="Value" />
+          <ScalarProperty Name="PaymentMethodId" ColumnName="PaymentMethodId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PaymentMethodSet">
+      <EntityTypeMapping TypeName="IsTypeOf(RestGest.Models.PaymentMethod)">
+        <MappingFragment StoreEntitySet="PaymentMethodSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ActiveMenuItemSet">
+      <EntityTypeMapping TypeName="IsTypeOf(RestGest.Models.ActiveMenuItem)">
+        <MappingFragment StoreEntitySet="ActiveMenuItemSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="RestaurantId" ColumnName="RestaurantId" />
+          <ScalarProperty Name="MenuItemId" ColumnName="MenuItemId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="PersonAddress" TypeName="RestGest.Models.PersonAddress" StoreEntitySet="PersonSet">
+      <EndProperty Name="Address">
+        <ScalarProperty Name="Id" ColumnName="Address_Id" />
+      </EndProperty>
+      <EndProperty Name="Person">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="OrderEmployee" TypeName="RestGest.Models.OrderEmployee" StoreEntitySet="OrderSet">
+      <EndProperty Name="Employee">
+        <ScalarProperty Name="Id" ColumnName="Employee_Id" />
+      </EndProperty>
+      <EndProperty Name="Order">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="OrderClient" TypeName="RestGest.Models.OrderClient" StoreEntitySet="OrderSet">
+      <EndProperty Name="Client">
+        <ScalarProperty Name="Id" ColumnName="Client_Id" />
+      </EndProperty>
+      <EndProperty Name="Order">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="RestaurantAddress" TypeName="RestGest.Models.RestaurantAddress" StoreEntitySet="RestaurantSet">
+      <EndProperty Name="Address">
+        <ScalarProperty Name="Id" ColumnName="Address_Id" />
+      </EndProperty>
+      <EndProperty Name="Restaurant">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="MenuItemOrder" TypeName="RestGest.Models.MenuItemOrder" StoreEntitySet="MenuItemOrder">
+      <EndProperty Name="MenuItem">
+        <ScalarProperty Name="Id" ColumnName="MenuItem_Id" />
+      </EndProperty>
+      <EndProperty Name="Order">
+        <ScalarProperty Name="Id" ColumnName="Orders_Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="OrderStatusOrder" TypeName="RestGest.Models.OrderStatusOrder" StoreEntitySet="OrderSet">
+      <EndProperty Name="OrderStatus">
+        <ScalarProperty Name="Id" ColumnName="OrderStatus_Id" />
+      </EndProperty>
+      <EndProperty Name="Order">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="PaymentOrder" TypeName="RestGest.Models.PaymentOrder" StoreEntitySet="PaymentSet">
+      <EndProperty Name="Order">
+        <ScalarProperty Name="Id" ColumnName="Order_Id" />
+      </EndProperty>
+      <EndProperty Name="Payment">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="4f16b100bda24da08fc8e404ad702ad6" Name="Diagram1" ZoomLevel="94" >
+        <EntityTypeShape EntityType="RestGest.Models.Address" Width="1.5" PointX="2.375" PointY="1.375" />
+        <EntityTypeShape EntityType="RestGest.Models.Person" Width="1.5" PointX="5.875" PointY="1.5" />
+        <EntityTypeShape EntityType="RestGest.Models.Client" Width="1.5" PointX="6.75" PointY="3.875" />
+        <InheritanceConnector EntityType="RestGest.Models.Client" />
+        <EntityTypeShape EntityType="RestGest.Models.Employee" Width="1.5" PointX="5" PointY="3.875" />
+        <InheritanceConnector EntityType="RestGest.Models.Employee" />
+        <EntityTypeShape EntityType="RestGest.Models.Order" Width="1.5" PointX="5.875" PointY="6.25" />
+        <AssociationConnector Association="RestGest.Models.PersonAddress" />
+        <AssociationConnector Association="RestGest.Models.OrderEmployee" />
+        <AssociationConnector Association="RestGest.Models.OrderClient" />
+        <EntityTypeShape EntityType="RestGest.Models.Restaurant" Width="1.5" PointX="0.75" PointY="5.125" />
+        <AssociationConnector Association="RestGest.Models.RestaurantAddress" />
+        <AssociationConnector Association="RestGest.Models.RestaurantEmployee" />
+        <EntityTypeShape EntityType="RestGest.Models.MenuItem" Width="1.5" PointX="3.625" PointY="8.375" />
+        <AssociationConnector Association="RestGest.Models.MenuItemOrder" />
+        <EntityTypeShape EntityType="RestGest.Models.MenuCategory" Width="1.5" PointX="0.75" PointY="9.625" />
+        <AssociationConnector Association="RestGest.Models.MenuCategoryMenuItem" />
+        <EntityTypeShape EntityType="RestGest.Models.OrderStatus" Width="1.5" PointX="8.375" PointY="8.25" />
+        <AssociationConnector Association="RestGest.Models.OrderStatusOrder" />
+        <EntityTypeShape EntityType="RestGest.Models.Payment" Width="1.5" PointX="6" PointY="11.125" />
+        <EntityTypeShape EntityType="RestGest.Models.PaymentMethod" Width="1.5" PointX="3.25" PointY="12" />
+        <AssociationConnector Association="RestGest.Models.PaymentOrder" />
+        <AssociationConnector Association="RestGest.Models.PaymentMethodPayment" />
+        <EntityTypeShape EntityType="RestGest.Models.ActiveMenuItem" Width="1.5" PointX="3.25" PointY="6" />
+        <AssociationConnector Association="RestGest.Models.RestaurantActiveMenuItem" />
+        <AssociationConnector Association="RestGest.Models.MenuItemActiveMenuItem" />
+        </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
